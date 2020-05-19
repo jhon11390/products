@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-  has_many :inventories
+  has_many :inventories, dependent: :destroy
   has_many :categories, through: :inventories
   after_create :save_categories
 
