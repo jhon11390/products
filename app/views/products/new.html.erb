@@ -1,0 +1,23 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-4">
+      <h1>Nuevo Producto</h1>
+      <%= form_for @product do |f| %>
+        <div class="form-group">
+          <%= f.label :Nombre_Producto%>
+          <%= f.text_field :name, class: "form-control"%>
+        </div>
+        <div class="form-group">
+          <%= f.label :Precio %>
+          <%= f.number_field :price, class: "form-control"%>
+        </div>
+        <% @categories.each do |category|%>
+          <div class="form-group">
+            <%= check_box_tag "categories[]", category.id %> <%= category.name %>
+          </div>
+        <% end %>
+        <%= f.submit "Create Product", class: "btn btn-primary btn-block btn-lg"%>
+      <% end %>
+    </div>
+  </div>
+</div>
