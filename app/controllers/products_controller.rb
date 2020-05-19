@@ -8,6 +8,9 @@ class ProductsController < ApplicationController
     @categories = Category.all
   end
 
+  def show
+  end
+
   def create
     @product = Product.new(product_params)
     @product.categories = params[:categories]
@@ -16,6 +19,11 @@ class ProductsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+    @product = Product.find(params[:id])
+    @categories = Category.all
   end
 
   def destroy
