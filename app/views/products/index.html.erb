@@ -25,9 +25,14 @@
             <tr>
               <td><%= product.name %></td>
               <td><%= product.price %></td>
-              <td>categorias</td>
               <td>
-                
+                <% product.categories.each do |category| %>
+                  <span><%= category.name %> </span>
+                <% end %>
+              </td>
+              <td>
+                <span>eliminar</span>
+                <span>eliminar</span>
               </td>
             </tr>
           <% end %>

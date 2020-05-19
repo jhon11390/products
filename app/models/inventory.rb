@@ -1,4 +1,4 @@
 class Inventory < ApplicationRecord
-  belongs_to :Category
-  belongs_to :Product
+  belongs_to :product
+  belongs_to :category
 end
