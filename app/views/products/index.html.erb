@@ -27,7 +27,11 @@
               <td><%= product.price %></td>
               <td>
                 <% product.categories.each do |category| %>
-                  <span><%= category.name %>, </span>
+                  <% if category == product.categories.last %>
+                    <%= category.name %>
+                  <% else %>
+                    <%= category.name + ', ' %>
+                  <% end %>
                 <% end %>
               </td>
               <td>

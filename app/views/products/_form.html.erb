@@ -11,11 +11,15 @@
           <%= f.label :Precio %>
           <%= f.number_field :price, class: "form-control"%>
         </div>
-        <% @categories.each do |category|%>
-          <div class="form-group">
-            <%= check_box_tag "categories[]", category.id %> <%= category.name %>
-          </div>
-        <% end %>
+        <div class="form-group">
+          <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |form| %>
+            <%= form.label(class:"container") do %>
+              <%= form.check_box %>
+              <%= form.object.name %>
+               <span class="chekmark"></span>
+            <% end %>
+          <% end %>
+        </div>
         <%= f.submit form_title, class: "btn btn-primary btn-block btn-lg"%>
       <% end %>
     </div>

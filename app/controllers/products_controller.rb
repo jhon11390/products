@@ -13,7 +13,6 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.categories = params[:categories]
     if @product.save
       redirect_to :products
     else
@@ -23,7 +22,15 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
-    @categories = Category.all
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      redirect_to :products
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -36,6 +43,7 @@ class ProductsController < ApplicationController
   private
 
     def product_params
-      params.require(:product).permit(:name, :price, :categories)
+      params.require(:product).permit(:name, :price, category_ids:[])
     end
+
 end
